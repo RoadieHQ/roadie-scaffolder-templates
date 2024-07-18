@@ -1,23 +1,38 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: custom-field-ext
-  title: Custom Field Extension Example
-  description: "A Scaffolder template with custom field extension"
+  name: select-field-from-api-debug
+  title: Debugging SelectFieldFromApi
+  description: "Debugging complex filters on SelectFieldFromApi scaffolder extension"
 spec:
   type: service
   owner: user:guest
   parameters:
-    - title: Provide some simple information
+    - title: Basic details
+      name:
+        title: Group
+        type: string
+        description: Group
+        ui:field: SelectFieldFromApi
+        ui:options:
+          path: "catalog/entities"
+          params:
+            filter: "kind=Group"
+          valueSelector: "metadata.name"
+          labelSelector: "metadata.description"
+    - title: Advanced options
       properties:
-        text:
-          title: some text
+        system:
+          title: System
           type: string
-        name:
-          title: AWS Policies thing
-          type: string
-          description: My custom name for the component
-          ui:field: AwsManagedPoliciesFieldExtension
+          description: Entity Selector
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: "catalog/entities"
+            params:
+              filter: "kind=system,spec.owner={{ parameters.delivery_stream }}&filter=kind=system,spec.owner=application-platforms"
+            valueSelector: "metadata.name"
+            labelSelector: "metadata.description"
   steps:
     - id: log-message
       name: Log Message
