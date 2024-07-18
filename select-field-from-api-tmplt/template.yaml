@@ -17,7 +17,7 @@ spec:
         ui:options:
           path: "catalog/entities"
           params:
-            filter: "kind=Group"
+            filter: "kind=group"
           valueSelector: "metadata.name"
           labelSelector: "metadata.description"
     - title: Advanced options
