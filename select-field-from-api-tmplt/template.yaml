@@ -9,17 +9,18 @@ spec:
   owner: user:guest
   parameters:
     - title: Basic details
-      name:
-        title: Group
-        type: string
-        description: Group
-        ui:field: SelectFieldFromApi
-        ui:options:
-          path: "catalog/entities"
-          params:
-            filter: "kind=group"
-          valueSelector: "metadata.name"
-          labelSelector: "metadata.description"
+      properties:
+        name:
+          title: Group
+          type: string
+          description: Group
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: "catalog/entities"
+            params:
+              filter: "kind=group"
+            valueSelector: "metadata.name"
+            labelSelector: "metadata.description"
     - title: Advanced options
       properties:
         system:
