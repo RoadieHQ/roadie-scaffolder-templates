@@ -31,8 +31,8 @@ spec:
           ui:options:
             path: "catalog/entities"
             params:
-              # filter: "kind=group,spec.parent={{ parameters.name }}&filter=kind=system,spec.owner=team-a"
-              filter: "filter=kind%3DGroup%2Cspec.parent={{ parameters.name }}&filter=kind%3Dsystem%2Cspec.owner%3Dteam-a"
+              - filter: "kind=group,spec.parent={{ parameters.name }}"
+              - filter: "kind=system,spec.owner=team-a"
 
             valueSelector: "metadata.name"
             labelSelector: "metadata.description"
